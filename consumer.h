@@ -3,6 +3,7 @@
 #include <queue>
 #include <random>
 #include <iostream>
+#include "mediator.h"
 
 class Consumer; 
 
@@ -11,26 +12,19 @@ class ConsumerFactory
 private:
     uint32_t inst_number;
     std::queue<std::unique_ptr<Consumer>> instance;
+    Mediator* mediator;
 public:
-    ConsumerFactory(uint32_t number) : inst_number(number){};
-    std::queue<std::unique_ptr<Consumer>> createFactory();
-   
+    ConsumerFactory(uint32_t number, Mediator *ref_mediator) : inst_number(number), mediator(ref_mediator){};
+    void createInstance();
+    void launchInstance();
 };
 
 class Consumer
 {
 private:
-    std::queue<int> integers;
+    Mediator* mediator;
 public:
-   Consumer ()
-   {
-    integers.push(2);
-    integers.push(4);
-    integers.push(6);
-    integers.push(7);
-    integers.push(9);
-    integers.push(11);
-   }
+   Consumer(Mediator  *ref_mediator) : mediator(ref_mediator){};
    void consume();
 
 };

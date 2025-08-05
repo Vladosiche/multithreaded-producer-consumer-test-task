@@ -3,6 +3,7 @@
 #include <string>
 #include "producer.h"
 #include "consumer.h"
+#include "factory.h"
 #include <random>
 
 int main()
@@ -11,7 +12,8 @@ int main()
 //std::queue<std::unique_ptr<Producer>> instance = Factory.createFactory();
 //std::cout<<"\n"<<"instance size:"<<instance.size()<<"\n";
 //instance.front()->produce();
-ConsumerFactory Factory(1);
-std::queue<std::unique_ptr<Consumer>> instance = Factory.createFactory();
-instance.front()->consume();
+//ConsumerFactory Factory(1);
+//std::queue<std::unique_ptr<Consumer>> instance = Factory.createFactory();
+//instance.front()->consume();
+Factory factory(1,1);
 }

@@ -1,22 +1,32 @@
 #include "producer.h"
+#include <iostream>
 
-std::queue<std::unique_ptr<Producer>> ProducerFactory::createFactory()
+void ProducerFactory::createInstance()
 {
         for(size_t i = 0 ; i<inst_number ; ++i)
         {
-            instance.push(std::make_unique<Producer>(100));
+            instance.push(std::make_unique<Producer>(100,mediator));
         }
-        return std::move(instance);
+}
+
+void ProducerFactory::launchInstance()
+{
+    while (!(instance.empty()))
+    {
+        instance.front()->produce();
+        instance.pop();
+    }
+    
 }
 
 void Producer::produce()
 {
         for(size_t i = 0 ; i<iteration;++i)
         {
-            integers.push(dist(gen));
+            mediator->set(dist(gen));
         }
 }
-Producer::Producer(uint32_t number_repetitions) : iteration(number_repetitions)
+Producer::Producer(uint32_t number_repetitions, Mediator *ref_mediator) : iteration(number_repetitions), mediator(ref_mediator)
 {
     gen.seed(rd());
     dist = std::uniform_int_distribution<int>(1, 100);

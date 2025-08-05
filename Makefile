@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -std=c++14 -g
-SRCS = main.cpp producer.cpp consumer.cpp
+SRCS = main.cpp producer.cpp consumer.cpp mediator.cpp factory.cpp
 TARGET = app
 
 all: $(TARGET)

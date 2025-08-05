@@ -1,19 +1,27 @@
 #include "consumer.h"
+#include <iostream>
 
 void Consumer::consume()
 {
-    while (!(integers.empty()))
+    while (!(mediator->is_empty()))
     {
-       std::cout<<integers.front();
-       integers.pop();
+       std::cout<<mediator->get()<<"\n";
     }
 }
 
- std::queue<std::unique_ptr<Consumer>>ConsumerFactory::createFactory()
+ void ConsumerFactory::createInstance()
  {
      for(size_t i = 0 ; i<inst_number ; ++i)
         {
-            instance.push(std::make_unique<Consumer>());
+            instance.push(std::make_unique<Consumer>(mediator));
         }
-        return std::move(instance);
+ }
+
+ void ConsumerFactory::launchInstance()
+ {
+     while (!(instance.empty()))
+    {
+        instance.front()->consume();
+        instance.pop();
+    }
  }
