@@ -5,7 +5,7 @@ void ProducerFactory::createInstance()
 {
         for(size_t i = 0 ; i<inst_number ; ++i)
         {
-            instance.push(std::make_unique<Producer>(100,mediator));
+            instance.push(std::make_unique<Producer>(7,mediator));
         }
 }
 
@@ -25,6 +25,7 @@ void Producer::produce()
         {
             mediator->set(dist(gen));
         }
+        mediator->set_end();
 }
 Producer::Producer(uint32_t number_repetitions, Mediator *ref_mediator) : iteration(number_repetitions), mediator(ref_mediator)
 {

@@ -2,11 +2,14 @@
 #include <iostream>
 
 void Consumer::consume()
-{
-    while (!(mediator->is_empty()))
-    {
-       std::cout<<mediator->get()<<"\n";
-    }
+{  
+        std::queue<int> value = mediator->get();
+        std::cout<<value.size()<<"\n";
+        for(size_t i = value.size(); i>0; i--)
+        {
+        std::cout<<value.front()<<"\n";
+        value.pop();
+        }
 }
 
  void ConsumerFactory::createInstance()
