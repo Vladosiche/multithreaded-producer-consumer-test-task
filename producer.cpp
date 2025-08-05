@@ -1,5 +1,6 @@
 #include "producer.h"
 #include <iostream>
+#include <thread>
 
 void ProducerFactory::createInstance()
 {
@@ -13,12 +14,21 @@ void ProducerFactory::launchInstance()
 {
     while (!(instance.empty()))
     {
-        instance.front()->produce();
+        auto item = std::move(instance.front());
         instance.pop();
+        produce_threads.emplace_back([item = std::move(item)]() mutable {
+        item->produce();
+        });
     }
     
 }
 
+void ProducerFactory::join_treads()
+{
+    for (auto& t : produce_threads) {
+    t.join();
+}
+}
 void Producer::produce()
 {
         for(size_t i = 0 ; i<iteration;++i)

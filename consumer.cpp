@@ -3,12 +3,14 @@
 
 void Consumer::consume()
 {  
-        std::queue<int> value = mediator->get();
-        std::cout<<value.size()<<"\n";
-        for(size_t i = value.size(); i>0; i--)
+        while(!(mediator->is_end()) || !(mediator->is_empty()))
         {
-        std::cout<<value.front()<<"\n";
-        value.pop();
+            std::queue<int> value = mediator->get();
+            for(size_t i = value.size(); i>0; i--)
+            {
+            std::cout<<value.front()<<"\n";
+            value.pop();
+            }
         }
 }
 

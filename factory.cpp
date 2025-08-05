@@ -5,4 +5,5 @@ Factory::Factory(uint32_t count_produce, uint32_t count_consume) : prfactory(cou
         cmfactory.createInstance();
         prfactory.launchInstance();
         cmfactory.launchInstance();
+        prfactory.join_treads();
     }
