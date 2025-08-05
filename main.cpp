@@ -1,16 +1,14 @@
 #include <iostream>
 #include <vector>
 #include <string>
-
-using namespace std;
+#include "producer.h"
+#include <random>
 
 int main()
 {
-    vector<string> msg {"Hello", "C++", "World", "from", "VS Code", "and the C++ extension!"};
-
-    for (const string& word : msg)
-    {
-        cout << word << " ";
-    }
-    cout << endl;
+ProducerFactory Factory(1); //це краще перенести до криейт факторі та перейменувати функцію на криейтпродюс
+std::queue<std::unique_ptr<Producer>> instance = Factory.createFactory();
+std::cout<<"\n"<<"instance size:"<<instance.size();
+instance.front()->produce();
+instance.front()->show();
 }
