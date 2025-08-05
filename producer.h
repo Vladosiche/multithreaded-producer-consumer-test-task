@@ -43,11 +43,3 @@ public:
     }
         */
 };
-
-//producer::producer(args)
-//{
-//}
-
-//producer::~producer()
-//{
-//}
