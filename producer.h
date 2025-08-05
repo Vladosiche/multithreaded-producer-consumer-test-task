@@ -30,13 +30,9 @@ private:
     std::mt19937 gen;
     std::uniform_int_distribution<int> dist;
 public:
-   Producer(uint32_t number_repetitions) : iteration(number_repetitions)
-   {
-    gen.seed(rd());
-    dist = std::uniform_int_distribution<int>(1, 100);
-   };
+   Producer(uint32_t number_repetitions);
    void produce();
-    
+    /*
     void show()
     {
         while(!(integers.empty()))
@@ -45,6 +41,7 @@ public:
             integers.pop();
         }
     }
+        */
 };
 
 //producer::producer(args)
