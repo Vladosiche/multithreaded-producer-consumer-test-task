@@ -4,7 +4,7 @@
 #include "producer.h"
 #include <cstdint>
 
-class Factory
+class Facade
 {
     private:
     uint32_t produce;
@@ -13,5 +13,5 @@ class Factory
     ProducerFactory prfactory;
     ConsumerFactory cmfactory;
     public:
-    Factory(uint32_t count_produce, uint32_t count_consume);
+    Facade(uint32_t count_produce, uint32_t count_consume);
 };

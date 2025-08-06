@@ -17,7 +17,7 @@ class Mediator
     get_lock.store(0);
    };
    void set(int integer);
-   std::queue<int> get();
+   std::queue<int> get(int id);
    bool is_empty();
    bool is_end();
    void set_end();
