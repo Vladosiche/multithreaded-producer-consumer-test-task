@@ -6,13 +6,12 @@ OBJS = $(SRCS:.cpp=.o)
 
 all: $(TARGET)
 
-%.o: %.cpp
-	$(CXX) -c -o $@ $< 
-	
-$(TARGET):
+
+$(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(TARGET)
 
-
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c -o $@ $< 
 
 clean:
-	rm -f $(TARGET)
+	rm -f $(TARGET) $(OBJS)
