@@ -16,7 +16,7 @@ private:
     std::vector<std::thread> produce_threads;
 public:
     ProducerFactory(uint32_t number, Mediator *ref_mediator) : inst_number(number), mediator(ref_mediator){};
-    void createInstance();
+    void createInstance(uint32_t numberOfIntegers);
     void launchInstance();
     void join_treads();
    

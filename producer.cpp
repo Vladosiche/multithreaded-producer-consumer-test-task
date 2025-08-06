@@ -5,11 +5,11 @@
 // Method: createInstance()
 // Description: The function of creating instances of producers
 //================================================================================
-void ProducerFactory::createInstance()
+void ProducerFactory::createInstance(uint32_t numberOfIntegers)
 {
         for(size_t i = 0 ; i<inst_number ; ++i)
         {
-            instance.push(std::make_unique<Producer>(10,mediator));
+            instance.push(std::make_unique<Producer>(numberOfIntegers,mediator));
         }
 }
 //================================================================================

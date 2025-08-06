@@ -13,5 +13,5 @@ class Facade
     ProducerFactory prfactory;
     ConsumerFactory cmfactory;
     public:
-    Facade(uint32_t count_produce, uint32_t count_consume);
+    Facade(uint32_t count_produce, uint32_t count_consume, uint32_t numberOfIntegers);
 };
